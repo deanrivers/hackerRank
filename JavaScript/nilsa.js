@@ -3,14 +3,25 @@ const readline = require('readline').createInterface({
     output: process.stdout
   })
   
-  readline.question(`What's your name?`, (name) => {
+  readline.question(`What's your name? `, (name) => {
     console.log(`Hi ${name}!`)
-    readline.question(`Who do you love?` , (love) =>{
-        console.log(`${name} loves ${love}`);
-        readline.question(`Is ${love} your baby mom?` , (babymom) =>{
+    readline.question(`How was your day?(good/bad) ` , (day) =>{
 
-            if(`${babymom}` == 'yes'){
-                console.log(`${love} is your baby mom.`);
+
+        if(`${day}` == 'good'){
+            console.log(`I'm glad your day was ${day} `);
+        } else{
+            console.log("I am sorry your day was bad =/. Can we talk about it?")
+        }
+        
+
+        readline.question(`Also...guess who misses you... ` , (misses) =>{
+
+            if(`${misses}` == 'Dean' || `${misses}` == 'dean'){
+                console.log(`Yes! ${misses} misses you a lot.`);
+                readline.close();
+            } else{
+                console.log(`Dean misses you a lot.`);
                 readline.close();
             }
         })
