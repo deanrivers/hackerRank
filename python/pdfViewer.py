@@ -2,7 +2,11 @@ def pdf_viewer(heights,string):
 
     #declare variables
     maxHeight = 0
-    area = maxHeight * len(string)
+    
+    calculateHeights = []
+    word = list(string)
+    # print word
+
     dict = {
         'a': 0,
         'b': 0,
@@ -29,22 +33,27 @@ def pdf_viewer(heights,string):
         'w': 0,
         'x': 0,
         'y': 0,
-        'z': 0,
-
-
+        'z': 1,
     }
 
-    #determine maxHeight
-    for i in heights:
-        if i > maxHeight:
-            maxHeight = i
-        
-    #match letter with height value
-    print(dict)
-        
-    pass
-
+    #update aplhabet with heights    
+    for i, letter in enumerate(sorted(dict)):
+        #print letter
+        dict[letter] = heights[i]
+    #print dict
     
+    #process word to get values
+    for letter in word:
+        calculateHeights.append(dict[letter])
+    maxHeight = max(calculateHeights)
+    #print maxHeight
+
+    #calculate area
+    area = maxHeight * len(string)
+    
+    print dict
+    print maxHeight
+    print area
     return area
 
-pdf_viewer((0,3,0,3,0,4,0,3,2,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5),'abc')
+pdf_viewer([4,2,1,2,3,4,3,7,4,1,5,6,1,3,2,6,6,3,7,3,1,1,5,1,1,4],'qjhwkcexec')

@@ -1,17 +1,9 @@
-#variables
+def find_max(nums):
+    max_num = float("-inf") # smaller than all other numbers
+    for num in nums:
+        if num > max_num:
+            max_num = num
+    return max_num
 
-#list. This is mutable
-cars = ["car 1", "car"]
-
-
-cars.append("Car 3")
-cars.remove("Car 3")
-print(cars)
-
-#if statement
-if "car 2" in cars:
-    print("yes")
-
-else:
-    print("no")
-
+x=  find_max([1,500,2,90])
+print x
