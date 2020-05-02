@@ -1,29 +1,49 @@
 function birthdays(s,d,m){
 
+    var chocolateArray = s;
+    var day = d;
+    var month = m;
+
     var answer = 0;
     var array = [];
-    for(var i = 0; i<s.length;i++){
-        
-        //determine if next square works
-        for(var j=0;j<=m;j++){
-            console.log('i '  + i);
-            
-            if(s[i] + s[j+1] <= d ){
-                // console.log(s[i]);
-                // console.log(s[j+1]);
+
+    var complementAdd = 0;
+
+    var currentSum = 0
+
+    for(var i = 0; i <=chocolateArray.length;i++){
+
+        for(var j = i+1; j<=month;j++){
+            // currentSum = currentSum + chocolateArray[j];
+            // console.log('Current Sum: '+currentSum+' at i:'+i)
+
+            //run through a segment startng at i.
+            if(currentSum<day && j+1<month){
                 
-                console.log('j ' + j);
-                array.push(s[i]);
-                array.push(s[j+1]);
+                console.log(chocolateArray[i],chocolateArray[j])
+                console.log('Day: '+day)
+                console.log('Month: '+month)
+                currentSum = currentSum + chocolateArray[j]
+                
+              
+            } else{
+                i = month;
+            }
+
+            //if all criteria is met, increase answer by 1
+            if(currentSum == day && j+1==month){
+                console.log('Possibility triggered at indeces: '+i,j)
+                answer++;
+                j=month;
             }
         }
 
-       // console.log(s[i])
+        
     }
-
-    console.log(array.length);
-    return array.length;
+    
 
 }
+
+
 
 birthdays([1,2,1,3,2],3,2);
